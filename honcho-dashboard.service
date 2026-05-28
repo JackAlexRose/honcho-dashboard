@@ -1,0 +1,18 @@
+[Unit]
+Description=Honcho Memory Dashboard
+After=network.target docker.service
+
+[Service]
+Type=simple
+User=jack
+WorkingDirectory=/home/jack/workshop/honcho-dash
+Environment=HERMES_HOME=/home/jack/.hermes
+Environment=PATH=/home/jack/.nvm/versions/node/v22.22.3/bin:/home/jack/.local/bin:/usr/local/bin:/usr/bin:/bin
+Environment=NODE_ENV=production
+Environment=PORT=3001
+ExecStart=/home/jack/.nvm/versions/node/v22.22.3/bin/node /home/jack/workshop/honcho-dash/node_modules/.bin/next start
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
